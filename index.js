@@ -3,6 +3,10 @@ const app = express();
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 
+const CaverJS = require('caver-js');
+const { numberToHex } = require('caver-js/packages/caver-utils');
+const caver = new CaverJS('https://api.baobab.klaytn.net:8651/');
+
 const apiRouter = express.Router();
 
 app.use(logger('dev', {}));
@@ -12,6 +16,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use('/api', apiRouter);
+
+
 
 apiRouter.post('/sayHello', function(req, res) {
   const responseBody = {
@@ -52,4 +58,7 @@ apiRouter.post('/showHello', function(req, res) {
 
 app.listen(3000, function() {
   console.log('Example skill server listening on port 3000!');
+  caver.klay.getBlockNumber().then((height) => {
+    console.log(height);
+});
 });

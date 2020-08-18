@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "caver-js": "0.0.2-z",
+    "connect-privkey-to-provider": "^0.0.3",
     "express": "^4.17.1",
     "morgan": "^1.10.0"
   }
